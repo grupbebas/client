@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>News</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style type="text/css">
+    a.readMore { text-decoration : none; color : #000; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <a class="navbar-brand" href="#">News API</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row mt-3" id="sidebar">
+      <div class="col-lg-3 justify-content-center">
+          <div class="row bg-success justify-content-center mb-3">
+            <h3 class="text-white">Filter By</h3>
+          </div>
+          <div class="btn-group pl-5 ml-2" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item category" href="#" id="sports">Sports</a>
+                <a class="dropdown-item category" href="#" id="health">Health</a>
+                <a class="dropdown-item category" href="#" id="entertainment">Entertainment</a>
+                <a class="dropdown-item category" href="#" id="general">General</a>
+                <a class="dropdown-item category" href="#" id="science">Science</a>
+                <a class="dropdown-item category" href="#" id="technology">Technology</a>
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control ml-3" id="query" placeholder="words">
+                </div>
+            </div>
+      </div>
+      <div class="col-lg-9" id="newsList">
+          
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
