@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div class="container col-md-12" style="height: 155px;">
+        <div class="page-header" style="height: 100px;">
+            <div style="float: left;">
+                <span>MealDB</span>
+            </div>
+            <div style="float: right;">
+
+            </div> 
+        </div>
+    </div>
+
+    <div class="container col-md-3">
+        <span>Data</span><br><br>
+        <input type="text" id="search" placeholder="Search By Meal" onkeyup="search()"/>
+    </div>
+
+    <div class="container col-md-4">
+        <span>Result</span><span id="errorSearch" style="color: red; display: none;"></span><br><br>
+        <div id="list"></div>
+    </div>
+
+    <div class="container col-md-5">
+        <span></span><br><br>
+        <div></div>
+    </div>
+
+    <script>
+        let server = "http://localhost:3000"
+        function search() {
+            let autocomplete = $("#search").val();
+            $("#list").html('<img src="./src/loading.gif"> loading...');
+            $.ajax({
+                url: `${server}/meals/search/${autocomplete}`,
+                method: "GET"
+            })
+                .done(function(response) {
+                    if(response) {
+                        let responses = response.data.meals;
+                        let data = "";
+                        for(let i = 0; i < responses.length; i++) {
+                            data += `
+                                <div><h3><a href="#">${responses[i].strMeal}</a></h3></div>
+                                <div>${responses[i].strInstructions}</div>
+                                <div><img src="${responses[i].strMealThumb}" style="width: 100px; height: auto;" /></div>
+                                <br>
+                            `;
+                        }
+                        $("#list").html(data);
+                    }
+                })
+                .fail(function(error) {
+                    $("#list").html("Data nothing");
+                });
+        }
+
+    </script>
+
+</body>
+</html>
