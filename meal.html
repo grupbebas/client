@@ -32,12 +32,42 @@
     </div>
 
     <div class="container col-md-5">
-        <span></span><br><br>
-        <div></div>
+        <span>Instruction</span><br><br>
+        <div id="listInstruction"></div>
     </div>
 
     <script>
         let server = "http://localhost:3000"
+
+        function instruction(data) {
+            $("#listInstruction").html('<img src="./src/loading.gif"> loading...');
+            $.ajax({
+                url: `${server}/meals/search/${data}`,
+                method: "GET"
+            })
+                .done(function(response) {
+                    if(response) {
+                        let responses = response.data.meals;
+                        console.log(responses[0].strYoutube)
+                        let link = responses[0].strYoutube
+                        data = `
+                            <div>
+                                <h3>Instruction</h3>
+                                ${responses[0].strInstructions}
+                            </div>
+                            <div>
+                                <a href='${link}' target="_blank">See The Video</a>
+                            </div>
+                            <hr>
+                        `;
+                        $("#listInstruction").html(data);
+                    }
+                })
+                .fail(function(error) {
+                    $("#listInstruction").html("Data nothing");
+                });
+        }
+
         function search() {
             let autocomplete = $("#search").val();
             $("#list").html('<img src="./src/loading.gif"> loading...');
@@ -51,10 +81,11 @@
                         let data = "";
                         for(let i = 0; i < responses.length; i++) {
                             data += `
-                                <div><h3><a href="#">${responses[i].strMeal}</a></h3></div>
-                                <div>${responses[i].strInstructions}</div>
-                                <div><img src="${responses[i].strMealThumb}" style="width: 100px; height: auto;" /></div>
-                                <br>
+                                <div>
+                                    <img src="${responses[i].strMealThumb}" style="width: 100px; height: auto;" />
+                                    <h3><a href="#" onclick="instruction('${responses[i].strMeal}')">${responses[i].strMeal}</a></h3>
+                                </div>
+                                <hr>
                             `;
                         }
                         $("#list").html(data);
