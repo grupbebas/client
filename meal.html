@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <div class="container col-md-12" style="height: 155px;">
+    <div class="container col-md-12 alert alert-success" style="height: 155px;">
         <div class="page-header" style="height: 100px;">
             <div style="float: left;">
                 <span>MealDB</span>
@@ -21,17 +21,17 @@
         </div>
     </div>
 
-    <div class="container col-md-3">
+    <div class="container col-md-3 alert alert-success">
         <span>Data</span><br><br>
-        <input type="text" id="search" placeholder="Search By Meal" onkeyup="search()"/>
+        <input class="form-control mr-sm-2" type="text" id="search" placeholder="Search By Meal" onkeyup="search()"/>
     </div>
 
-    <div class="container col-md-4">
+    <div class="container col-md-4 alert alert-danger">
         <span>Result</span><span id="errorSearch" style="color: red; display: none;"></span><br><br>
         <div id="list"></div>
     </div>
 
-    <div class="container col-md-5">
+    <div class="container col-md-5 alert alert-warning">
         <span>Instruction</span><br><br>
         <div id="listInstruction"></div>
     </div>
@@ -89,10 +89,12 @@
                             `;
                         }
                         $("#list").html(data);
+                        $("#listInstruction").html("");
                     }
                 })
                 .fail(function(error) {
                     $("#list").html("Data nothing");
+                    $("#listInstruction").html("Data nothing");
                 });
         }
 
