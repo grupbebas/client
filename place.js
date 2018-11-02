@@ -47,7 +47,6 @@ function loadNearby (query) {
   })
     .done(response => {
       let data = response.data.results
-      console.log(response, 'data place---', data)
       data.forEach(place => {
           if (!place.photos) {
               place.photos = [{
@@ -142,10 +141,18 @@ function matrixDistance(name) {
   })
     .done(data => {
       console.log('SUccess MATRIX POST', data)
-      $('#placeModalAddress').append(`
-          <h3>distance: ${data.data[0].elements[0].distance.text}</h3> 
-          <h3>duration: ${data.data[0].elements[0].duration.text}</h3> 
-      `)
+      if(data.status === 'ZERO_RESULTS') {
+        $('#placeModalAddress').append(`
+            <h3>Status: ${data.status}</h3>
+          `)
+      } else {
+          $('#placeModalAddress').append(`
+            <h3>Origin: ${data.data.routes[0].legs[0].start_address}</h3> 
+            <h3>Destination: ${data.data.routes[0].legs[0].end_address}</h3> 
+            <h3>Distance: ${data.data.routes[0].legs[0].distance.text}</h3> 
+            <h3>Duration: ${data.data.routes[0].legs[0].duration.text}</h3> 
+          `)
+      }
     })
     .fail(err => {
       console.log(err)
