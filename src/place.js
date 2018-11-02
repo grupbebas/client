@@ -1,8 +1,12 @@
 $(document).ready(() => {
   let token = localStorage.getItem('token')
   if (!token) {
-      window.location = './login.html'
+      window.location = './index.html'
   }
+  gapi.load('auth2', function() {
+    gapi.auth2.init();
+  });
+
   getLocationUser()
 })
 

@@ -1,4 +1,14 @@
 $( document ).ready(function() {
+  let token = localStorage.getItem('token')
+  if (!token) {
+      window.location = './index.html'
+  }
+  gapi.load('auth2', function() {
+    gapi.auth2.init();
+  });
+
+
+
   console.log( "ready gos!" );
   
   function getHighlight(url) {

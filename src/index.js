@@ -30,8 +30,8 @@ function onSignIn(googleUser) {
     })
     .done(res => {
         // console.log(res);
-        // localStorage.setItem('token', res.token)
-        // window.location = '/home.html'
+        localStorage.setItem('token', res.token)
+        window.location = '/place.html'
     })
     .fail(err => {
         console.log(err);
@@ -78,13 +78,9 @@ function login(){
     .done(res => {
         console.log(res);
         localStorage.setItem('token', res.token)
-        window.location.href = '/home.html'
+        window.location = '/place.html'    
     })
     .fail(err => {
         console.log(err);
     })
-}
-
-function logout(){
-    localStorage.removeItem('token')
 }

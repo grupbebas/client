@@ -23,8 +23,9 @@
 
 <body>
 
-    <!-- <div class="ui centered grid container">
-        <div class="column ">
+
+    <div class="ui middle aligned center aligned grid">
+        <div class="ui five wide column">
             <h2 class="ui teal image header">
                 <img src="assets/images/logo.png" class="image">
                 <div class="content">
@@ -45,7 +46,9 @@
                             <input id="loginPassword" type="password" name="password" placeholder="Password">
                         </div>
                     </div>
-                    <div class="ui fluid large teal submit button">Login</div>
+                    <div class="ui fluid large teal submit button" onclick="login()">Login</div>
+                    <div class=" g-signin2" data-onsuccess="onSignIn"></div>
+
                 </div>
 
                 <div class="ui error message"></div>
@@ -53,177 +56,54 @@
             </form>
 
             <div class="ui message">
-                New to us? <a href="#">Sign Up</a>
-            </div>
-        </div>
-    </div> -->
-    <div class="ui middle aligned center aligned grid">
-            <div class="ui five wide column">
-              <h2 class="ui teal image header">
-                <img src="assets/images/logo.png" class="image">
-                <div class="content">
-                  Log-in to your account
-                </div>
-              </h2>
-              <form class="ui large form">
-                <div class="ui stacked segment">
-                  <div class="field">
-                    <div class="ui left icon input">
-                      <i class="user icon"></i>
-                      <input id="loginEmail" type="email" name="email" placeholder="E-mail address">
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="ui left icon input">
-                      <i class="lock icon"></i>
-                      <input id="loginPassword" type="password" name="password" placeholder="Password">
-                    </div>
-                  </div>
-                  <div class="ui fluid large teal submit button"  onclick="login()">Login</div>
-                  <div class=" g-signin2" data-onsuccess="onSignIn"></div>
-
-                </div>
-          
-                <div class="ui error message"></div>
-          
-              </form>
-          
-              <div class="ui message">
                 New to us? <a href="#" onclick="showFormRegis()">Sign Up</a>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--  -->
-    <!-- <div class="ui container">
-
-
-
-        <div class="ui centered grid">
-            <div class="eight wide column center aligned" style="margin-top: 100px">
-                <div class="ui button" tabindex="0" onclick="showFormLogin()">
-                    Login
-                </div>
-                <div class="ui button" tabindex="0" onclick="showFormRegis()">
-                    Register
-                </div>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
             </div>
         </div>
-        <div ui centered grid> -->
-            <!-- form login -->
-            <!-- <div id="formLogin">
-                <div class="ui grid">
-                    <div class="ui four wide column raised segment" style="margin: 50px auto 0px">
-                        <div class="ui form">
-                            <div class="field">
-                                <h5>Login</h5>
-                            </div>
-                            <div class="field">
-                                <div class="ui input icon">
-                                    <i class="ui user icon"></i>
-                                    <input type="email" placeholder="Email" id="loginEmail">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui input icon">
-                                    <i class="ui lock icon"></i>
-                                    <input type="password" placeholder="password" id="loginPassword">
-                                </div>
-                            </div>
-                            <div class="ui extra content">
-                                <div class="ui grid">
-                                    <div class="ui ten wide column">
-                                        <p id="notifLogin" style="color: red; font-weight: bold;"></p>
-                                    </div>
-                                    <div class="ui three wide column">
-                                        <div id="my-signin2"></div>
-                                    </div>
-                                    <div class="ui three wide column">
-                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                        <button class="ui blue right floated button" onclick="login()"> Login </button>
-                                    </div>
-                                </div>
-                            </div>
+    </div>
+
+    <!-- form register -->
+    <div id="formRegister">
+        <div class="ui grid">
+            <div class="ui four wide column raised segment" style="margin: 50px auto 0px">
+                <div class="ui large form">
+                    <div class="field">
+                        <h5>Register</h5>
+                    </div>
+                    <div class="field">
+                        <div class="ui input icon">
+                            <i class="ui name icon"></i>
+                            <input type="text" placeholder="name" id="regisName">
                         </div>
                     </div>
-                </div>
-            </div> -->
+                    <div class="field">
+                        <div class="ui input icon">
+                            <i class="ui user icon"></i>
+                            <input type="email" placeholder="Email" id="regisEmail">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input icon">
+                            <i class="ui lock icon"></i>
+                            <input type="password" placeholder="password" id="regisPassword">
+                        </div>
+                    </div>
+                    <div class="ui extra content">
+                        <div class="ui grid">
+                            <div class="ui ten wide column">
+                            </div>
+                            <div class="ui three wide column">
 
-            <!-- form register -->
-            <div id="formRegister">
-                <div class="ui grid">
-                    <div class="ui four wide column raised segment" style="margin: 50px auto 0px">
-                        <div class="ui large form">
-                            <div class="field">
-                                <h5>Register</h5>
                             </div>
-                            <div class="field">
-                                <div class="ui input icon">
-                                    <i class="ui name icon"></i>
-                                    <input type="text" placeholder="name" id="regisName">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui input icon">
-                                    <i class="ui user icon"></i>
-                                    <input type="email" placeholder="Email" id="regisEmail">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui input icon">
-                                    <i class="ui lock icon"></i>
-                                    <input type="password" placeholder="password" id="regisPassword">
-                                </div>
-                            </div>
-                            <div class="ui extra content">
-                                <div class="ui grid">
-                                    <div class="ui ten wide column">
-                                    </div>
-                                    <div class="ui three wide column">
-
-                                    </div>
-                                    <div class="ui three wide column">
-                                        <button class="ui blue right floated button" onclick="register()">Register</button>
-                                    </div>
-                                </div>
-                                <p id="notifRegis" style="color: red; font-weight: bold;"></p>
+                            <div class="ui three wide column">
+                                <button class="ui blue right floated button" onclick="register()">Register</button>
                             </div>
                         </div>
+                        <p id="notifRegis" style="color: red; font-weight: bold;"></p>
                     </div>
                 </div>
             </div>
         </div>
-    <!-- </div> -->
+    </div>
     <script src="./src/index.js"></script>
 
 </body>
