@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="63936865269-hd5471ugr0l5aa1nbjvehmkjpd9v88rl.apps.googleusercontent.com">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" />
@@ -27,6 +30,9 @@
             <a id="meals " class="item active" href="meal.html">
                 Meals
             </a>
+            <div class="right item">
+                <button class="ui button" onclick="logout()">Logout</button>
+            </div>
         </div>
     </div>
 
@@ -46,7 +52,33 @@
     </div>
 
     <script>
+
+       
+        $(function(){
+            let token = localStorage.getItem('token')
+            if (!token) {
+                window.location = './index.html'
+            }
+            gapi.load('auth2', function() {
+                gapi.auth2.init();
+            });
+        })
+
+
+
         let server = "http://localhost:3000"
+
+
+        function logout(){
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+            localStorage.removeItem('token')
+            window.location = '/index.html'
+        }
+
+
 
         function instruction(data) {
             $("#listInstruction").html('<img src="./src/loading.gif"> loading...');

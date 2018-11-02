@@ -1,8 +1,15 @@
 const host = `http://localhost:3000`
 
 $(document).ready(function(){
+    let token = localStorage.getItem('token')
+    if (!token) {
+        window.location = './index.html'
+    }
+    gapi.load('auth2', function() {
+        gapi.auth2.init();
+    });
+    
     search('jakarta')
-
 
 })
 
