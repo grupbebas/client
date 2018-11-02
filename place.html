@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <meta name="google-signin-client_id" content="521685363071-7id4qnmbfucdqomdjj3aqs4bndtnti9r.apps.googleusercontent.com"> -->
-    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
-    <title>Place</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta name="google-signin-client_id" content="521685363071-7id4qnmbfucdqomdjj3aqs4bndtnti9r.apps.googleusercontent.com"> -->
+  <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+  <title>Place</title>
 </head>
+
 <body style="background-color: #191919;">
-  <!-- <div class="ui segment">
-    <div class="ui grid">
-      <div class="ui two wide column">
-        <h1>hangout</h1>
-      </div>
-      <div class="ui one wide column" style="margin-top:5px;">
-        <a href="./resto.html"><h3>Home</h3></a>
-      </div>
-      <div class="ui one wide column" style="margin-top:5px;">
-        <a href="./recipe.html"><h3>Recipe</h3></a>
-      </div>
-      <div class="ui one wide column" style="margin-top:5px;">
-        <a href="./weather.html"><h3>Weather</h3></a>
-      </div>
-      <div class="ui one wide column" style="margin-top:5px;">
-        <a href="./place.html"><h3>Places</h3></a>
-      </div>
+
+  <div class="ui inverted segment">
+    <div class="ui inverted secondary pointing menu">
+      <a id="places" class="item active" href="./place.html">
+        Places
+      </a>
+      <a id="news" class="item" href="./news.html">
+        News
+      </a>
+      <a id="restaurants" class="item" href="./zomato.html">
+        Restaurants
+      </a>
+      <a id="meals" class="item" href="meal.html">
+        Meals
+      </a>
     </div>
-    <button class="ui right floated button" onclick="logout()">Logout</button>
   </div>
-  <div class="ui container">
-      
-  </div> -->
+
   <div class="ui grid container" style="margin: auto;">
     <div class="ui column inverted centered segment" style="margin: auto">
       <h3> Recommended Place Categories:</h3>
       <div class="ui inverted blue button" onclick="loadNearby('Mall')">
         Mall
       </div>
-      <div class="ui inverted red button"onclick="loadNearby('Bar')">
+      <div class="ui inverted red button" onclick="loadNearby('Bar')">
         Bar
       </div>
       <div class="ui inverted teal button" onclick="loadNearby('Cafe')">
@@ -66,13 +64,13 @@
         Park
       </div>
       <div class="ui link cards centered" id="cardsPlaces" style="margin-top:20px;">
-        
+
       </div>
     </div>
   </div>
 
   <div class="ui segment">
-    
+
   </div>
   <div class="ui modal places">
     <div class="header" id="placeModalName">
@@ -85,7 +83,7 @@
       <div class="description">
         <h3>Address :</h3>
         <h3 id="placeModalAddress"></h3>
-        
+
       </div>
     </div>
     <div class="actions">
@@ -101,4 +99,5 @@
   </script>
   <script src="./src/place.js"></script>
 </body>
+
 </html>

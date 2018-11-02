@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,25 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
 </head>
-<body>
-    
-    <div class="container col-md-12 alert alert-success" style="height: 155px;">
-        <div class="page-header" style="height: 100px;">
-            <div style="float: left;">
-                <span>MealDB</span>
-            </div>
-            <div style="float: right;">
 
-            </div> 
+<body>
+    <div class="ui inverted segment">
+        <div class="ui inverted secondary pointing menu">
+            <a id="places" class="item " href="./place.html">
+                Places
+            </a>
+            <a id="news" class="item" href="./news.html">
+                News
+            </a>
+            <a id="restaurants" class="item" href="./zomato.html">
+                Restaurants
+            </a>
+            <a id="meals " class="item active" href="meal.html">
+                Meals
+            </a>
         </div>
     </div>
 
@@ -42,15 +51,16 @@
         function instruction(data) {
             $("#listInstruction").html('<img src="./src/loading.gif"> loading...');
             $.ajax({
-                url: `${server}/meals/search/${data}`,
-                method: "GET"
-            })
-                .done(function(response) {
-                    if(response) {
+                    url: `${server}/meals/search/${data}`,
+                    method: "GET"
+                })
+                .done(function (response) {
+                    if (response) {
                         let responses = response.data.meals;
                         console.log(responses[0].strYoutube)
                         let link = responses[0].strYoutube
-                        data = `
+                        data =
+                            `
                             <div>
                                 <h3>Instruction</h3>
                                 ${responses[0].strInstructions}
@@ -63,7 +73,7 @@
                         $("#listInstruction").html(data);
                     }
                 })
-                .fail(function(error) {
+                .fail(function (error) {
                     $("#listInstruction").html("Data nothing");
                 });
         }
@@ -72,15 +82,16 @@
             let autocomplete = $("#search").val();
             $("#list").html('<img src="./src/loading.gif"> loading...');
             $.ajax({
-                url: `${server}/meals/search/${autocomplete}`,
-                method: "GET"
-            })
-                .done(function(response) {
-                    if(response) {
+                    url: `${server}/meals/search/${autocomplete}`,
+                    method: "GET"
+                })
+                .done(function (response) {
+                    if (response) {
                         let responses = response.data.meals;
                         let data = "";
-                        for(let i = 0; i < responses.length; i++) {
-                            data += `
+                        for (let i = 0; i < responses.length; i++) {
+                            data +=
+                                `
                                 <div>
                                     <img src="${responses[i].strMealThumb}" style="width: 100px; height: auto;" />
                                     <h3><a href="#" onclick="instruction('${responses[i].strMeal}')">${responses[i].strMeal}</a></h3>
@@ -92,13 +103,13 @@
                         $("#listInstruction").html("");
                     }
                 })
-                .fail(function(error) {
+                .fail(function (error) {
                     $("#list").html("Data nothing");
                     $("#listInstruction").html("Data nothing");
                 });
         }
-
     </script>
 
 </body>
+
 </html>
