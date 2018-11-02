@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div class="container col-md-12" style="height: 155px;">
+        <div class="page-header" style="height: 100px;">
+            <div style="float: left;">
+                <span>MealDB</span>
+            </div>
+            <div style="float: right;">
+
+            </div> 
+        </div>
+    </div>
+
+    <div class="container col-md-3">
+        <span>Data</span><br><br>
+        <input type="text" id="search" placeholder="Search By Meal" onkeyup="search()"/>
+    </div>
+
+    <div class="container col-md-4">
+        <span>Result</span><span id="errorSearch" style="color: red; display: none;"></span><br><br>
+        <div id="list"></div>
+    </div>
+
+    <div class="container col-md-5">
+        <span>Instruction</span><br><br>
+        <div id="listInstruction"></div>
+    </div>
+
+    <script>
+        let server = "http://localhost:3000"
+
+        function instruction(data) {
+            $("#listInstruction").html('<img src="./src/loading.gif"> loading...');
+            $.ajax({
+                url: `${server}/meals/search/${data}`,
+                method: "GET"
+            })
+                .done(function(response) {
+                    if(response) {
+                        let responses = response.data.meals;
+                        console.log(responses[0].strYoutube)
+                        let link = responses[0].strYoutube
+                        data = `
+                            <div>
+                                <h3>Instruction</h3>
+                                ${responses[0].strInstructions}
+                            </div>
+                            <div>
+                                <a href='${link}' target="_blank">See The Video</a>
+                            </div>
+                            <hr>
+                        `;
+                        $("#listInstruction").html(data);
+                    }
+                })
+                .fail(function(error) {
+                    $("#listInstruction").html("Data nothing");
+                });
+        }
+
+        function search() {
+            let autocomplete = $("#search").val();
+            $("#list").html('<img src="./src/loading.gif"> loading...');
+            $.ajax({
+                url: `${server}/meals/search/${autocomplete}`,
+                method: "GET"
+            })
+                .done(function(response) {
+                    if(response) {
+                        let responses = response.data.meals;
+                        let data = "";
+                        for(let i = 0; i < responses.length; i++) {
+                            data += `
+                                <div>
+                                    <img src="${responses[i].strMealThumb}" style="width: 100px; height: auto;" />
+                                    <h3><a href="#" onclick="instruction('${responses[i].strMeal}')">${responses[i].strMeal}</a></h3>
+                                </div>
+                                <hr>
+                            `;
+                        }
+                        $("#list").html(data);
+                    }
+                })
+                .fail(function(error) {
+                    $("#list").html("Data nothing");
+                });
+        }
+
+    </script>
+
+</body>
+</html>
